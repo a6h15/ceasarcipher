@@ -4,25 +4,17 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-def decrypt(original_text ,shift_amount):
-    decoded_text = ""
+
+def caesar(original_text, shift_amount, encode_or_decode):  # last var will use the direction -- shifting right or left
+    output_text = ""
     for letter in original_text:
+
+        if encode_or_decode == "decode":
+            shift_amount *= -1
+
         shifted_position = alphabet.index(letter) - shift_amount
         shifted_position %= len(alphabet)
-        decoded_text += alphabet[shifted_position]
-    print(f"Here is the encoded result: {decoded_text}")
+        output_text += alphabet[shifted_position]
+    print(f"Here is the {encode_or_decode}d result: {output_text}")  # lol encode and decode + d on the end makes it past tense and this works out
 
-decrypt(original_text=text,shift_amount=shift)
-
-def encrypt(original_text,shift_amount):
-    cipher_text = ""
-    for char in original_text:
-        shifted_position = alphabet.index(char) + shift_amount
-        shifted_position %= len(alphabet) # always between 0 - 25
-        cipher_text += alphabet[shifted_position]
-
-    print(f"Here is your encrypted text - {cipher_text}")
-
-
-encrypt(original_text=text,shift_amount=shift)
-
+caesar(original_text=text, shift_amount=shift,encode_or_decode=direction)
