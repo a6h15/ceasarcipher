@@ -28,7 +28,7 @@ while shouldrepeat:
     shift = int(input("Type the shift number:\n"))
     caesar(original_text=text, shift_amount=shift, encode_or_decode=direction)
 
-    restart = input(f"Type 'yes' if you want to encode or decode again.Else type 'no'"),lower()
+    restart = input(f"Type 'yes' if you want to encode or decode again.Else type 'no'").lower()
     if restart == "no":
         shouldrepeat = False
         print(f"Goodbye")
